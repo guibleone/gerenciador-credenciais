@@ -2,19 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "manipulate_io.h"
 #include "types.h"
 
-void userRegister(User *user, FILE *registro)
-{
-  if (user == NULL)
-  {
-    fprintf(stderr, "Erro: Ponteiro de usuário inválido.\n");
-    exit(EXIT_FAILURE);
-  }
-
-  printf("------Cadastro de Usuário------\n");
+void readUser (User *user) {
   printf("Digite seu email: ");
-
   if (fgets(user->email, sizeof(user->email), stdin) == NULL)
   {
     fprintf(stderr, "Erro: Falha ao ler o email.\n");
@@ -29,8 +21,20 @@ void userRegister(User *user, FILE *registro)
     exit(EXIT_FAILURE);
   }
   user->password[strcspn(user->password, "\n")] = '\0';
+}
 
-  fprintf(registro, "%s %s\n", user->email, user->password);
+void userRegister(User *user, FILE *registro)
+{
+  if (user == NULL)
+  {
+    fprintf(stderr, "Erro: Ponteiro de usuário inválido.\n");
+    exit(EXIT_FAILURE);
+  }
+
+  printf("------Cadastro de Usuário------\n");
+  readUser(user);
+  
+  // fprintf(registro, "%02x %02x\n", toCriptograph(user->email), toCriptograph(user->password));
 
   printf("Usuário registrado com sucesso!\n");
 }
@@ -39,4 +43,21 @@ void printUser(User *user)
 {
   printf("Email: %s\n", user->email);
   printf("Senha: %s\n", user->password);
+}
+
+void searchUser(User *user, FILE *registro){
+  readUser(user);
+  unsigned char * teste = toCriptograph(user->email);
+  
+  // if(compareUnsignedChar(teste, , 32)) {
+  //   printf("Encontrado Usuário");
+  // }
+}
+void updateUser(User *user, FILE *registro){
+  readUser(user);
+
+}
+void deleteUser(User *user, FILE *registro){
+  readUser(user);
+
 }

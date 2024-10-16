@@ -3,4 +3,6 @@
 
 void appendFile();
 
+unsigned char* toCriptograph (char * string); 
+int compareUnsignedChar (unsigned char * text1,unsigned char * text2, int nBytes);
 #endif

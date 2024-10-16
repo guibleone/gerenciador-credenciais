@@ -8,7 +8,7 @@ CC = gcc
 CFLAGS = -Wall
 
 # Define as bibliotecas externas (vazio neste caso)
-LIBS =
+LIBS = -lgcrypt
 
 # Define as variáveis para os arquivos fonte, headers e objetos
 SOURCES = $(wildcard ./src/*.c)
