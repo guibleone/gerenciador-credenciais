@@ -8,6 +8,28 @@
 
 Nosso projeto consiste em um **gerenciador de credenciais pessoais**, onde é possível cadastrar senhas, e-mails e os sites correspondentes de maneira simples e intuitiva. A principal funcionalidade do sistema é proporcionar um local seguro e organizado para armazenar suas informações de login, eliminando a necessidade de memorizar diversas senhas ou, pior ainda, utilizar a mesma senha para diferentes serviços.
 
+## Compilação
+
+**Clone o repositório**
+   ```bash
+   git clone https://github.com/guibleone/gerenciador-credenciais.git
+   ``` 
+**Acesse o diretório do projeto**
+
+```bash 
+cd gerenciador-credenciais 
+```
+
+**Execute o Makefile**
+```bash 
+make 
+```
+
+**Após a execução do Makefile, o executável gerenciadorCredenciais será criado no diretório raiz do projeto.**
+```bash 
+./gerenciadorCredenciais
+```
+
 ## Segurança
 
 A segurança dos seus dados é nossa prioridade. O sistema utiliza **criptografia de ponta a ponta**, garantindo que todos os arquivos gerados e manipulados sejam criptografados tanto dentro quanto fora da aplicação. Isso significa que, mesmo nós, desenvolvedores, não temos acesso às suas informações.
