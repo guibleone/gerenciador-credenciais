@@ -1,6 +1,9 @@
 #ifndef FUNCS_H
 #define FUNCS_H
 
-void printHello();
+#include "types.h"
+
+void userRegister(User *user);
+void printUser(User *user);
 
 #endif
