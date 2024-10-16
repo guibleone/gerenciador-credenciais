@@ -43,4 +43,4 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar
 
 ## Licença
 
-[LICENSE]
+[https://github.com/guibleone/gerenciador-credenciais/blob/1d33919b2aeb74d0507d748968131efb4f45b991/LICENSE]
