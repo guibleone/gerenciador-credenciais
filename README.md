@@ -1,5 +1,9 @@
 # Gerenciador de Credenciais Pessoais
 
+[![Linguagem: C](https://img.shields.io/badge/Linguagem-C-blue.svg)](https://www.cprogramming.com/)
+[![Instituição: UNICAMP](https://img.shields.io/badge/Instituição-UNICAMP-yellow.svg)](https://www.unicamp.br/)
+[![Tipo: Projeto](https://img.shields.io/badge/Tipo-Projeto-green.svg)](#) 
+
 ## Descrição do Projeto
 
 Nosso projeto consiste em um **gerenciador de credenciais pessoais**, onde é possível cadastrar senhas, e-mails e os sites correspondentes de maneira simples e intuitiva. A principal funcionalidade do sistema é proporcionar um local seguro e organizado para armazenar suas informações de login, eliminando a necessidade de memorizar diversas senhas ou, pior ainda, utilizar a mesma senha para diferentes serviços.
@@ -43,4 +47,4 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar
 
 ## Licença
 
-[https://github.com/guibleone/gerenciador-credenciais/blob/1d33919b2aeb74d0507d748968131efb4f45b991/LICENSE]
+[MIT License](https://github.com/guibleone/gerenciador-credenciais/blob/1d33919b2aeb74d0507d748968131efb4f45b991/LICENSE) 
