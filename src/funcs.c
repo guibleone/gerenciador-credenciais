@@ -4,24 +4,8 @@
 
 #include "manipulate_io.h"
 #include "types.h"
+#include "aux_funcs.h"
 
-void readUser (User *user) {
-  printf("Digite seu email: ");
-  if (fgets(user->email, sizeof(user->email), stdin) == NULL)
-  {
-    fprintf(stderr, "Erro: Falha ao ler o email.\n");
-    exit(EXIT_FAILURE);
-  }
-  user->email[strcspn(user->email, "\n")] = '\0';
-
-  printf("Digite sua senha: ");
-  if (fgets(user->password, sizeof(user->password), stdin) == NULL)
-  {
-    fprintf(stderr, "Erro: Falha ao ler a senha.\n");
-    exit(EXIT_FAILURE);
-  }
-  user->password[strcspn(user->password, "\n")] = '\0';
-}
 
 void userRegister(User *user, FILE *registro)
 {
@@ -33,9 +17,16 @@ void userRegister(User *user, FILE *registro)
 
   printf("------Cadastro de Usuário------\n");
   readUser(user);
-  
-  // fprintf(registro, "%02x %02x\n", toCriptograph(user->email), toCriptograph(user->password));
+  UserCriptographed userCripto;
+  userCripto.email = toCriptograph(user->email);
+  userCripto.password = toCriptograph(user->password);
 
+  for (int i = 0; i < 32; i++)
+    fprintf(registro, "%02x", userCripto.email[i]);
+  // fprintf(registro, " ");
+  for (int i = 0; i < 32; i++)
+    fprintf(registro, "%02x", userCripto.password[i]);
+  fprintf(registro, "\n");
   printf("Usuário registrado com sucesso!\n");
 }
 
@@ -47,8 +38,14 @@ void printUser(User *user)
 
 void searchUser(User *user, FILE *registro){
   readUser(user);
-  unsigned char * teste = toCriptograph(user->email);
-  
+  UserCriptographed searchedUser;
+  searchedUser.email = toCriptograph(user->email);
+  searchedUser.password = toCriptograph(user->password);
+  // unsigned char * teste = toCriptograph(user->email);
+  UserCriptographedArray ListHashs;
+
+  int numberRegisters = getRegistersOnFile(registro);
+  // printf(" -%d- ", numberRegisters);
   // if(compareUnsignedChar(teste, , 32)) {
   //   printf("Encontrado Usuário");
   // }

@@ -10,4 +10,14 @@ typedef struct
   char password[MAX_PASSWORD];
 } User;
 
+typedef struct {
+  unsigned char * email;
+  unsigned char * password;
+} UserCriptographed;
+
+typedef struct {
+  UserCriptographed * UsersCriptographed;
+  int size;
+} UserCriptographedArray;
+
 #endif
