@@ -5,5 +5,5 @@
 #include "types.h"
 
 void readUser (User *user);
-int getRegistersOnFile (FILE * registro);
+int getRegistersOnFile (UserCriptographedArray * ArrayUsers,FILE * registro);
 #endif

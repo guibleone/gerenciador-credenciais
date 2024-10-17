@@ -44,11 +44,17 @@ void searchUser(User *user, FILE *registro){
   // unsigned char * teste = toCriptograph(user->email);
   UserCriptographedArray ListHashs;
 
-  int numberRegisters = getRegistersOnFile(registro);
+  int numberRegisters = getRegistersOnFile(&ListHashs,registro);
+  // printf("%d",ListHashs.size);
+  // for (int i = 0; i < ListHashs.size; i++) {
+  //   printf("%s ",ListHashs.UsersCriptographed[i].email);
+  //   printf("- %s ",ListHashs.UsersCriptographed[i].password);
+  // }
   // printf(" -%d- ", numberRegisters);
   // if(compareUnsignedChar(teste, , 32)) {
   //   printf("Encontrado Usuário");
   // }
+  free(ListHashs.UsersCriptographed);
 }
 void updateUser(User *user, FILE *registro){
   readUser(user);

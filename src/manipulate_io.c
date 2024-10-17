@@ -23,12 +23,12 @@ int compareUnsignedChar (unsigned char * text1,unsigned char * text2, int nBytes
     //Calcula o Tam e ja transforma em Hash
     gcry_md_hash_buffer(GCRY_MD_SHA256, hash, string, strlen(string));   
 
-    printf("SHA-256: ");
+    // printf("SHA-256: ");
     // for (int i = 0; i < 32; i++) {
     //     printf("%02x", hash[i]);
     // }
-    char * teste1  = (char *) hash;
-    printf("%.*s", (int) sizeof(hash), hash);
-    printf("\n");
+    // char * teste1  = (char *) hash;
+    // printf("%.*s", (int) sizeof(hash), hash);
+    // printf("\n");/
     return hash;
 }

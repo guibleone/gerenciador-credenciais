@@ -31,29 +31,30 @@ int RowCounter(FILE *arquivo) {
   return c;
 }
 
-void getRegistersOnFile (FILE * registro) {
+void getRegistersOnFile (UserCriptographedArray * ArrayUsers,FILE * registro) {
     int count = 0;
-    // UserCriptographedArray * ArrayUsers,
+    // ,
     char * hash = (char *) malloc(65 * sizeof(char));
-    // char hash[66];
-    // ArrayUsers->size = RowCounter(registro);
-    // ArrayUsers->UsersCriptographed = malloc(ArrayUsers->size * sizeof(UserCriptographed)); 
-    // if (ArrayUsers->UsersCriptographed == NULL) {
-    //     fprintf(stderr, "Erro ao alocar memória.\n");
-    //     return;
-    // }
-
+    ArrayUsers->size = RowCounter(registro);
+    printf("Tamanho retornado: %d\n", ArrayUsers->size); 
+    ArrayUsers->UsersCriptographed = malloc(ArrayUsers->size * sizeof(UserCriptographed)); 
+    if (ArrayUsers->UsersCriptographed == NULL) {
+        printf("Erro ao alocar memória.\n");
+        return;
+    }
+    printf("Memória alocada com sucesso.\n");
     while (fgets(hash, 65, registro) != NULL){
+        //Retirar /n/0 do arquivo
         if (!strcmp( hash, "\n\0")){
-            printf("flase");
+            // printf("flase");
             continue;
         }
         if (count % 2 == 0)
-            printf("User[%d]: %s -\n",count/2,hash);
-        //     ArrayUsers->UsersCriptographed[count].email = (unsigned char *) hash;
+            printf("User[%d]: %s -\n",count/2,(unsigned char *) hash);
+            // ArrayUsers->UsersCriptographed[count/2].email = (unsigned char *) hash;
         if (count % 2 != 0)
-            printf("Senha[%d]: %s -\n",(count - 1)/2,hash);
-        //     ArrayUsers->UsersCriptographed[count - 1].password = (unsigned char *) hash;
+            printf("Senha[%d]: %s -\n",(count - 1)/2,(unsigned char *) hash);
+            // ArrayUsers->UsersCriptographed[(count - 1)/2].password = (unsigned char *) hash;
         count ++;
         // printf("- %s -\n",hash);
     }
