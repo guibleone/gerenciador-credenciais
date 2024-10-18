@@ -28,21 +28,29 @@ int RowCounter(FILE *arquivo) {
   while (fgets(string, sizeof(string), arquivo) != NULL) {
     c++;
   }
+  rewind(arquivo);
   return c;
 }
 
-void getRegistersOnFile (UserCriptographedArray * ArrayUsers,FILE * registro) {
+UserCriptographedArray * getRegistersOnFile (FILE * registro) {
     int count = 0;
     // ,
+    UserCriptographedArray * ArrayUsers;
     char * hash = (char *) malloc(65 * sizeof(char));
     ArrayUsers->size = RowCounter(registro);
-    printf("Tamanho retornado: %d\n", ArrayUsers->size); 
-    ArrayUsers->UsersCriptographed = malloc(ArrayUsers->size * sizeof(UserCriptographed)); 
+    // printf("%dteste", ArrayUsers->size);
+    ArrayUsers->UsersCriptographed = (UserCriptographed *) malloc(ArrayUsers->size * sizeof(UserCriptographed)); 
+    for (int i = 0; i < ArrayUsers->size; i++){
+      ArrayUsers->UsersCriptographed[i].email = (unsigned char *) malloc(65 * sizeof(unsigned char)); 
+      ArrayUsers->UsersCriptographed[i].password = (unsigned char *) malloc(65 * sizeof(unsigned char)); 
+    }
     if (ArrayUsers->UsersCriptographed == NULL) {
         printf("Erro ao alocar memória.\n");
-        return;
+        return NULL;
     }
-    printf("Memória alocada com sucesso.\n");
+
+    // printf("%s", ArrayUsers->UsersCriptographed[0].email);
+    printf("Memória alocada com sucesso11.\n");
     while (fgets(hash, 65, registro) != NULL){
         //Retirar /n/0 do arquivo
         if (!strcmp( hash, "\n\0")){
@@ -50,12 +58,17 @@ void getRegistersOnFile (UserCriptographedArray * ArrayUsers,FILE * registro) {
             continue;
         }
         if (count % 2 == 0)
-            printf("User[%d]: %s -\n",count/2,(unsigned char *) hash);
-            // ArrayUsers->UsersCriptographed[count/2].email = (unsigned char *) hash;
+            strcpy((char *)ArrayUsers->UsersCriptographed[count / 2].email, hash);
         if (count % 2 != 0)
-            printf("Senha[%d]: %s -\n",(count - 1)/2,(unsigned char *) hash);
-            // ArrayUsers->UsersCriptographed[(count - 1)/2].password = (unsigned char *) hash;
+            strcpy((char *)ArrayUsers->UsersCriptographed[(count-1) / 2].password, hash);
         count ++;
         // printf("- %s -\n",hash);
     }
+
+    for (int i = 0; i < ArrayUsers->size; i++) {
+    printf("User[%d]:%s \n",i,ArrayUsers->UsersCriptographed[i].email);
+    printf("Senha[%d]:%s \n",i,ArrayUsers->UsersCriptographed[i].password);
+  }
+
+    return ArrayUsers;
 }
