@@ -36,24 +36,32 @@ void printUser(User *user)
   printf("Senha: %s\n", user->password);
 }
 
+
+
 void searchUser(User *user, FILE *registro){
   readUser(user);
   UserCriptographed searchedUser;
+  
   searchedUser.email = toCriptograph(user->email);
   searchedUser.password = toCriptograph(user->password);
-  // unsigned char * teste = toCriptograph(user->email);
+  
   UserCriptographedArray * ListHashs = getRegistersOnFile(registro);
   
-  // getRegistersOnFile(&ListHashs,registro);
   printf("Tamanho: %d\n",ListHashs->size);
   for (int i = 0; i < ListHashs->size; i++) {
     printf("User[%d]:%s ",i,ListHashs->UsersCriptographed[i].email);
     printf("Senha[%d]:%s ",i,ListHashs->UsersCriptographed[i].password);
   }
-  
-  // if(compareUnsignedChar(teste, , 32)) {
-  //   printf("Encontrado Usuário");
-  // }
+  for (int i = 0; i < ListHashs->size; i++){
+    // printf("%s - %s", searchedUser.email, ListHashs->UsersCriptographed[i].email);
+    if(!strcmp((char *) searchedUser.email, (char *) ListHashs->UsersCriptographed[i].email)) {
+      printf("Encontrado Usuário\n");
+    }else{
+      printf("Nao encontrado Usuario\n");
+    }
+  }
+  free(ListHashs->UsersCriptographed->email);
+  free(ListHashs->UsersCriptographed->password);
   free(ListHashs->UsersCriptographed);
 }
 void updateUser(User *user, FILE *registro){

@@ -11,8 +11,8 @@ typedef struct
 } User;
 
 typedef struct {
-  unsigned char * email;
-  unsigned char * password;
+  char * email;
+  char * password;
 } UserCriptographed;
 
 typedef struct {
