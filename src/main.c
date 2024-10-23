@@ -1,37 +1,43 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "funcs.h"
+#include "controller.h"
+#include "interface.h"
 
-int main(int argc, char *arcv[]){
+int main(){
 
   //sistema de login
 
-  printf("BEM VINDO AO ENCRIPTADOR 3000\n"); 
-  printf("Oque deseja fazer:\n"); 
-  printf("1 - Buscar através do login.\n"); 
-  printf("2 - Cadastro de Nova Credencial.\n"); 
-  printf("3 - Edição de Credenciais.\n"); 
-  printf("4 - Exclusão de Credenciais\n");
-  printf(">>>> ");
-  int opc;
-  scanf("%d", &opc);
-  getchar();
+  char * args[] = {
+    "Mostrar todas credenciais",
+    "Buscar por serviço", 
+    "Cadastrar nova credencial", 
+    "Editar credencial", 
+    "Excluir credencial"
+  };
+
+  int argc = 5;
+
+  int opc = menu(args, argc);
+
   switch (opc) {
     case 1:
-      handleSearchByService();
+      handleShowAll();
       break;
     case 2:
-      handleCreateNewCredential();
+      handleSearchByService();
       break;
     case 3:
-      // atualizar credencial
+      handleCreateNewCredential();
       break;
     case 4:
+      // atualizar credencial
+      break;
+    case 5:
       // deletar credencial
       break;
     default: 
-      printf("Não selecionado nenhuma opcão");
+      printf("Esta opção não é valida\n");
       return 0;
       break;
   }
