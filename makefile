@@ -7,9 +7,6 @@ CC = gcc
 # Define as flags de compilação (warnings)
 CFLAGS = -Wall
 
-# Define as bibliotecas externas (vazio neste caso)
-LIBS =
-
 # Define as variáveis para os arquivos fonte, headers e objetos
 SOURCES = $(wildcard ./src/*.c)
 HEADERS = $(wildcard ./src/*.h)
