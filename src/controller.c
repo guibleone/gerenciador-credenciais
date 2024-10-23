@@ -30,9 +30,9 @@ void searchByService(char * service){
 
   printf("%s%20s%20s%15s\n","ID", "Serviço", "Login", "Senha");
   for (int i = 0; i < c; i++){
-    if (!strcmp(credenciais[i].servico, service)){
+    if (!strcmp(credenciais[i].service, service)){
       found = 1;
-      printf("%d%20s%20s%15s\n", i, credenciais[i].servico, credenciais[i].email, credenciais[i].password);
+      printf("%d%20s%20s%15s\n", i, credenciais[i].service, credenciais[i].login, credenciais[i].password);
     }
   }
 
@@ -50,7 +50,7 @@ void getAll(){
 
   printf("%s%20s%20s%15s\n","ID", "Serviço", "Login", "Senha");
   for (int i = 0; i < c; i++){
-    printf("%d%20s%20s%15s\n", i, credenciais[i].servico, credenciais[i].email, credenciais[i].password);
+    printf("%d%20s%20s%15s\n", i, credenciais[i].service, credenciais[i].login, credenciais[i].password);
   }
 }
 
@@ -65,9 +65,9 @@ void deleteCredential(int id){
 
   for (int i = 0; i < c; i++){
     if (i != id){
-      fprintf(file, "%s", credenciais[i].servico);
+      fprintf(file, "%s", credenciais[i].service);
       fprintf(file, " ");
-      fprintf(file, "%s", credenciais[i].email);
+      fprintf(file, "%s", credenciais[i].login);
       fprintf(file, " ");
       fprintf(file, "%s", credenciais[i].password);
       fprintf(file, "\n");

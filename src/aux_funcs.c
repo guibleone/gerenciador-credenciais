@@ -23,15 +23,15 @@ void loadCredentials(Credential * credenciais){
   FILE * file;
   file = fopen("usuarios.txt", "r");
 
-  char servico[40];
+  char service[40];
   char login[40];
-  char senha[40];
+  char password[40];
 
   int i = 0;
-  while (fscanf(file, "%s %s %s", servico, login, senha) != EOF){
-    strcpy(credenciais[i].servico, servico);
-    strcpy(credenciais[i].email, login);
-    strcpy(credenciais[i].password, senha);
+  while (fscanf(file, "%s %s %s", service, login, password) != EOF){
+    strcpy(credenciais[i].service, service);
+    strcpy(credenciais[i].login, login);
+    strcpy(credenciais[i].password, password);
     i++;
   }
 }
