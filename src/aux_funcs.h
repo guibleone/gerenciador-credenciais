@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include "types.h"
 
-void readUser (User *user);
-UserCriptographedArray * getRegistersOnFile (FILE * registro);
-int RowCounter(FILE *arquivo);
+int RowCounter(char * filename);
+void loadCredentials(Credential * credentials);
 #endif
