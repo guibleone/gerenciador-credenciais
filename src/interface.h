@@ -5,5 +5,6 @@ int menu(char * argv[], int argc);
 void handleSearchByService();
 void handleCreateNewCredential();
 void handleShowAll();
+void handleDeleteCredential();
 
 #endif

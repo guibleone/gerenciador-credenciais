@@ -34,7 +34,7 @@ int main(){
       // atualizar credencial
       break;
     case 5:
-      // deletar credencial
+      handleDeleteCredential();
       break;
     default: 
       printf("Esta opção não é valida\n");

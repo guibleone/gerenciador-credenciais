@@ -13,14 +13,11 @@ void userRegister(char * service, char * login, char * password){
     exit(EXIT_FAILURE);
   }
 
-  for (int i = 0; i < strlen(service); i++)
-    fprintf(file, "%c", service[i]);
+  fprintf(file, "%s", service);
   fprintf(file, " ");
-  for (int i = 0; i < strlen(login); i++)
-    fprintf(file, "%c", login[i]);
+  fprintf(file, "%s", login);
   fprintf(file, " ");
-  for (int i = 0; i < strlen(password); i++)
-    fprintf(file, "%c", password[i]);
+  fprintf(file, "%s", password);
   fprintf(file, "\n");
 }
 
@@ -31,11 +28,11 @@ void searchByService(char * service){
 
   loadCredentials(credenciais);
 
-  printf("%s%15s%15s\n", "Serviço", "Login", "Senha");
+  printf("%s%20s%20s%15s\n","ID", "Serviço", "Login", "Senha");
   for (int i = 0; i < c; i++){
     if (!strcmp(credenciais[i].servico, service)){
       found = 1;
-      printf("%s%15s%15s\n", credenciais[i].servico, credenciais[i].email, credenciais[i].password);
+      printf("%d%20s%20s%15s\n", i, credenciais[i].servico, credenciais[i].email, credenciais[i].password);
     }
   }
 
@@ -51,8 +48,31 @@ void getAll(){
 
   loadCredentials(credenciais);
 
-  printf("%s%15s%15s\n", "Serviço", "Login", "Senha");
+  printf("%s%20s%20s%15s\n","ID", "Serviço", "Login", "Senha");
   for (int i = 0; i < c; i++){
-    printf("%s%15s%15s\n", credenciais[i].servico, credenciais[i].email, credenciais[i].password);
+    printf("%d%20s%20s%15s\n", i, credenciais[i].servico, credenciais[i].email, credenciais[i].password);
   }
+}
+
+void deleteCredential(int id){
+  int c = RowCounter("usuarios.txt");
+  Credential * credenciais = (Credential*)malloc(sizeof(Credential) * c);
+
+  loadCredentials(credenciais);
+
+  FILE * file;
+  file = fopen("usuarios.txt", "w");
+
+  for (int i = 0; i < c; i++){
+    if (i != id){
+      fprintf(file, "%s", credenciais[i].servico);
+      fprintf(file, " ");
+      fprintf(file, "%s", credenciais[i].email);
+      fprintf(file, " ");
+      fprintf(file, "%s", credenciais[i].password);
+      fprintf(file, "\n");
+    }
+  }
+
+  fclose(file);
 }

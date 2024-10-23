@@ -56,5 +56,15 @@ void handleCreateNewCredential(){
 }
 
 void handleShowAll(){
+    system("clear");
     getAll();
+}
+
+void handleDeleteCredential(){
+    system("clear");
+    getAll();
+    printf("Qual credencial deseja excluir? (ID): ");
+    int id;
+    scanf("%d", &id);
+    deleteCredential(id);
 }
