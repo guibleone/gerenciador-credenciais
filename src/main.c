@@ -1,46 +1,45 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "controller.h"
 #include "interface.h"
 
-int main(){
+int main() {
+    // Sistema de login
 
-  //sistema de login
+    char *args[] = {"Mostrar todas credenciais", "Buscar por serviço",
+                    "Cadastrar nova credencial", "Editar credencial",
+                    "Excluir credencial",        "Sair"};
 
-  char * args[] = {
-    "Mostrar todas credenciais",
-    "Buscar por serviço", 
-    "Cadastrar nova credencial", 
-    "Editar credencial", 
-    "Excluir credencial"
-  };
+    int argc = 6;
+    int opc;
 
-  int argc = 5;
+    opc = menu(args, argc);
 
-  int opc = menu(args, argc);
-
-  switch (opc) {
+    switch (opc) {
     case 1:
-      handleShowAll();
-      break;
+        handleShowAll();
+        break;
     case 2:
-      handleSearchByService();
-      break;
+        handleSearchByService();
+        break;
     case 3:
-      handleCreateNewCredential();
-      break;
+        handleCreateNewCredential();
+        break;
     case 4:
-      // atualizar credencial
-      break;
+        // TODO: implementar a funcionalidade de edição de credencial
+        printf("Funcionalidade de edição ainda não implementada.\n");
+        break;
     case 5:
-      handleDeleteCredential();
-      break;
-    default: 
-      printf("Esta opção não é valida\n");
-      return 0;
-      break;
-  }
+        handleDeleteCredential();
+        break;
+    case 6:
+        printf("Saindo do sistema!\n");
+        break;
+    default:
+        printf("Opção inválida! Tente novamente.\n");
+        break;
+    }
 
-  return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }

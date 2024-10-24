@@ -1,2 +1,4 @@
 usuarios.txt
 gerenciadorCredenciais
+*.o
+.clang-format
