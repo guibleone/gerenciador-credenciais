@@ -23,11 +23,11 @@ int main() {
         handleSearchByService();
         break;
     case 3:
-        handleCreateNewCredential();
+        handleCreateCredential();
         break;
     case 4:
         // TODO: implementar a funcionalidade de edição de credencial
-        printf("Funcionalidade de edição ainda não implementada.\n");
+        handleEditCredential();
         break;
     case 5:
         handleDeleteCredential();

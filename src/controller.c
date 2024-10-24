@@ -5,7 +5,7 @@
 #include "aux_funcs.h"
 #include "types.h"
 
-void userRegister(char *service, char *login, char *password) {
+void createCredential(char *service, char *login, char *password) {
     FILE *file;
     file = fopen("usuarios.txt", "a+");
     if (file == NULL) {
@@ -97,6 +97,47 @@ void deleteCredential(int id) {
             fprintf(file, "%s", credentials[i].login);
             fprintf(file, " ");
             fprintf(file, "%s", credentials[i].password);
+            fprintf(file, "\n");
+        }
+    }
+
+    free(credentials);
+    fclose(file);
+}
+
+void editCredential(int id, char *service, char *login, char *password) {
+    int c = RowCounter("usuarios.txt");
+    Credential *credentials = (Credential *)malloc(sizeof(Credential) * c);
+    if (credentials == NULL) {
+        fprintf(stderr, "Erro ao alocar credenciais.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    loadCredentials(credentials);
+
+    FILE *file;
+    file = fopen("usuarios.txt", "w");
+
+    if ((id + 1) > c)
+        fprintf(stderr, "Não existe credencial com este ID.\n");
+    if (id < 0)
+        fprintf(stderr, "ID inválido!\n");
+
+    for (int i = 0; i < c; i++) {
+        if (i != id) {
+            fprintf(file, "%s", credentials[i].service);
+            fprintf(file, " ");
+            fprintf(file, "%s", credentials[i].login);
+            fprintf(file, " ");
+            fprintf(file, "%s", credentials[i].password);
+            fprintf(file, "\n");
+        }
+        if (i == id) {
+            fprintf(file, "%s", strcpy(credentials[i].service, service));
+            fprintf(file, " ");
+            fprintf(file, "%s", strcpy(credentials[i].login, login));
+            fprintf(file, " ");
+            fprintf(file, "%s", strcpy(credentials[i].service, password));
             fprintf(file, "\n");
         }
     }

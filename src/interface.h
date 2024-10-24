@@ -3,8 +3,9 @@
 
 int menu(char *argv[], int argc);
 void handleSearchByService();
-void handleCreateNewCredential();
+void handleCreateCredential();
 void handleShowAll();
 void handleDeleteCredential();
+void handleEditCredential();
 
 #endif

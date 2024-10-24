@@ -1,9 +1,10 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-void userRegister(char *service, char *login, char *password);
-void searchByService(char *service);
 void getAll();
+void createCredential(char *service, char *login, char *password);
+void searchByService(char *service);
 void deleteCredential(int id);
+void editCredential(int id, char *service, char *login, char *password);
 
 #endif

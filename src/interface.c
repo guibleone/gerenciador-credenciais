@@ -33,7 +33,7 @@ void handleSearchByService() {
     searchByService(servico);
 }
 
-void handleCreateNewCredential() {
+void handleCreateCredential() {
     char service[40];
     char login[40];
     char password[40];
@@ -47,7 +47,7 @@ void handleCreateNewCredential() {
     printf("Senha: ");
     scanf("%s", password);
 
-    userRegister(service, login, password);
+    createCredential(service, login, password);
 
     printf("Credencial cadastrada!\n");
 }
@@ -64,4 +64,28 @@ void handleDeleteCredential() {
     int id;
     scanf("%d", &id);
     deleteCredential(id);
+}
+
+void handleEditCredential() {
+    system("clear");
+    getAll();
+    printf("Qual credencial deseja editar? (ID): ");
+    int id;
+    scanf("%d", &id);
+
+    char service[40];
+    char login[40];
+    char password[40];
+
+    printf("Editar credencial #%d\n", id);
+    printf("Serviço: ");
+    scanf("%s", service);
+    printf("Login: ");
+    scanf("%s", login);
+    printf("Senha: ");
+    scanf("%s", password);
+
+    editCredential(id, service, login, password);
+
+    printf("Credencial editada com sucesso!\n");
 }
