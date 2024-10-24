@@ -23,7 +23,7 @@ int RowCounter(char *filename) {
     return c;
 }
 
-void loadCredentials(Credential *credenciais) {
+void loadCredentials(Credential *credentials) {
     FILE *file;
     file = fopen("usuarios.txt", "r");
 
@@ -33,9 +33,9 @@ void loadCredentials(Credential *credenciais) {
 
     int i = 0;
     while (fscanf(file, "%s %s %s", service, login, password) != EOF) {
-        strcpy(credenciais[i].service, service);
-        strcpy(credenciais[i].login, login);
-        strcpy(credenciais[i].password, password);
+        strcpy(credentials[i].service, service);
+        strcpy(credentials[i].login, login);
+        strcpy(credentials[i].password, password);
         i++;
     }
 }

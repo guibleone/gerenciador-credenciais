@@ -6,7 +6,6 @@
 
 int main() {
     // Sistema de login
-
     char *args[] = {"Mostrar todas credenciais", "Buscar por serviço",
                     "Cadastrar nova credencial", "Editar credencial",
                     "Excluir credencial",        "Sair"};
