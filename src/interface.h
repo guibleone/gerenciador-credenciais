@@ -2,6 +2,7 @@
 #define INTERFACE_H
 
 int menu(char *argv[], int argc);
+void waitEnter();
 void handleSearchByService();
 void handleCreateCredential();
 void handleShowAll();

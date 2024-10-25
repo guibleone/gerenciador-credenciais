@@ -13,32 +13,34 @@ int main() {
     int argc = 6;
     int opc;
 
-    opc = menu(args, argc);
+    do {
+        opc = menu(args, argc);
 
-    switch (opc) {
-    case 1:
-        handleShowAll();
-        break;
-    case 2:
-        handleSearchByService();
-        break;
-    case 3:
-        handleCreateCredential();
-        break;
-    case 4:
-        // TODO: implementar a funcionalidade de edição de credencial
-        handleEditCredential();
-        break;
-    case 5:
-        handleDeleteCredential();
-        break;
-    case 6:
-        printf("Saindo do sistema!\n");
-        break;
-    default:
-        printf("Opção inválida! Tente novamente.\n");
-        break;
-    }
+        switch (opc) {
+        case 1:
+            handleShowAll();
+            break;
+        case 2:
+            handleSearchByService();
+            break;
+        case 3:
+            handleCreateCredential();
+            break;
+        case 4:
+            handleEditCredential();
+            break;
+        case 5:
+            handleDeleteCredential();
+            break;
+        case 6:
+            printf("Saindo do sistema!\n");
+            break;
+        default:
+            printf("Opção inválida! Tente novamente.\n");
+            break;
+        }
+        waitEnter();
+    } while (opc != 6);
 
     return EXIT_SUCCESS;
 }

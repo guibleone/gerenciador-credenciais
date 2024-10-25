@@ -8,6 +8,12 @@ void drawLine(int length, char ch) {
     printf("\n");
 }
 
+void waitEnter() {
+    printf(">>> Aperte 'Enter' para continuar...\n");
+    while (getchar() != '\n')
+        ; // Limpa o buffer de entrada
+    getchar();
+}
 int menu(char *argv[], int argc) {
     system("clear");
     drawLine(60, '=');
@@ -73,19 +79,16 @@ void handleEditCredential() {
     int id;
     scanf("%d", &id);
 
-    char service[40];
     char login[40];
     char password[40];
 
     printf("Editar credencial #%d\n", id);
-    printf("Serviço: ");
-    scanf("%s", service);
     printf("Login: ");
     scanf("%s", login);
     printf("Senha: ");
     scanf("%s", password);
 
-    editCredential(id, service, login, password);
+    editCredential(id, login, password);
 
     printf("Credencial editada com sucesso!\n");
 }

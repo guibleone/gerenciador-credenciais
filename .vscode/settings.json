@@ -4,7 +4,8 @@
     ".prettierrc": "json",
     "*.css": "css",
     "*.rb": "ruby",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "aux_funcs.h": "c"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
