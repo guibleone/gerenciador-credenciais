@@ -14,6 +14,7 @@ void waitEnter() {
         ; // Limpa o buffer de entrada
     getchar();
 }
+
 int menu(char *argv[], int argc) {
     system("clear");
     drawLine(60, '=');

@@ -6,4 +6,6 @@
 
 int RowCounter(char *filename);
 void loadCredentials(Credential *credentials);
+int showCredentials(int x, int y, Credential *credentials);
+
 #endif
