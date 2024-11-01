@@ -29,13 +29,11 @@ void searchByService(char *service) {
 
     loadCredentials(credentials);
 
+    printf("%s%20s%20s%15s\n", "ID", "Serviço", "Login", "Senha");
     for (int i = 0; i < c; i++) {
         if (!strcmp(credentials[i].service, service)) {
             found = 1;
-            if (i == 0)
-                printf("%s%20s%20s%15s\n", "ID", "Serviço", "Login", "Senha");
-            printf("%d%20s%20s%15s\n", i, credentials[i].service,
-                   credentials[i].login, credentials[i].password);
+            printf("%d%20s%20s%15s\n", i, credentials[i].service, credentials[i].login, credentials[i].password);
         }
     }
 
@@ -60,10 +58,7 @@ void getAll() {
 
     if (c > 0) {
         printf("%s%20s%20s%15s\n", "ID", "Serviço", "Login", "Senha");
-        for (int i = 0; i < c; i++) {
-            printf("%d%20s%20s%15s\n", i, credentials[i].service,
-                   credentials[i].login, credentials[i].password);
-        }
+        showCredentials(0, c, credentials);
     }
 
     free(credentials);
@@ -118,13 +113,10 @@ void editCredential(int id, char *login, char *password) {
 
     for (int i = 0; i < c; i++) {
         if (i != id) {
-            fprintf(file, "%s %s %s\n", credentials[i].service,
-                    credentials[i].login, credentials[i].password);
+            fprintf(file, "%s %s %s\n", credentials[i].service, credentials[i].login, credentials[i].password);
         }
         if (i == id) {
-            fprintf(file, "%s %s %s\n", credentials[i].service,
-                    strcpy(credentials[i].login, login),
-                    strcpy(credentials[i].service, password));
+            fprintf(file, "%s %s %s\n", credentials[i].service, strcpy(credentials[i].login, login), strcpy(credentials[i].password, password));
         }
     }
 
