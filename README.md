@@ -8,10 +8,6 @@
 
 Nosso projeto consiste em um **gerenciador de credenciais pessoais**, onde é possível cadastrar senhas, e-mails e os sites correspondentes de maneira simples e intuitiva. A principal funcionalidade do sistema é proporcionar um local seguro e organizado para armazenar suas informações de login, eliminando a necessidade de memorizar diversas senhas ou, pior ainda, utilizar a mesma senha para diferentes serviços.
 
-## Segurança
-
-A segurança dos seus dados é nossa prioridade. O sistema utiliza **criptografia de ponta a ponta**, garantindo que todos os arquivos gerados e manipulados sejam criptografados tanto dentro quanto fora da aplicação. Isso significa que, mesmo nós, desenvolvedores, não temos acesso às suas informações.
-
 
 ## Compilação
 
