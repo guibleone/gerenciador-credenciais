@@ -38,7 +38,7 @@ void searchByService(char *service) {
     }
 
     if (!found)
-        printf("Nenhum registro encontrado\n");
+        printf("\033[31mNenhum registro encontrado\n\033[m");
 
     free(credentials);
 }
@@ -46,7 +46,7 @@ void searchByService(char *service) {
 int getAll() {
     int c = RowCounter("usuarios.txt");
     if (c <= 0) {
-        fprintf(stderr, "Nenhuma credencial cadastrada.\n");
+        fprintf(stderr, "\033[31mNenhuma credencial cadastrada.\n\033[m");
     }
 
     Credential *credentials = (Credential *)malloc(sizeof(Credential) * c);

@@ -31,7 +31,7 @@ int main() {
             handleDeleteCredential();
             break;
         case 6:
-            printf("Saindo do sistema!\n");
+            printf("\033[31mSaindo do sistema!\n\033[m");
             break;
         default:
             printf("Opção inválida! Tente novamente.\n");

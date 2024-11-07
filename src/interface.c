@@ -17,11 +17,11 @@ void waitEnter() {
 int menu(char *argv[], int argc) {
     system("clear");
     drawLine(60, '=');
-    printf("Gerenciador de Senhas\n");
+    printf("\033[34m%42s\n\033[m", "Gerenciador de Credenciais");
     drawLine(60, '=');
 
     for (int i = 0; i < argc; i++) {
-        printf("[%d] - %s\n", i + 1, argv[i]);
+        printf("\033[32m[%d]\033[m - %s\n", i + 1, argv[i]);
     }
     printf(">>>> ");
     int option;
@@ -56,7 +56,7 @@ void handleCreateCredential() {
 
     createCredential(service, login, password);
 
-    printf("Credencial cadastrada!\n");
+    printf("\033[32mCredencial cadastrada!\n\033[m");
 }
 
 void handleShowAll() {
@@ -73,9 +73,9 @@ void handleDeleteCredential() {
 
     if (id >= 0 && id < c){
         deleteCredential(id);
-        printf("Credencial apagada com sucesso!\n");
+        printf("\033[32mCredencial apagada com sucesso!\n\033[m");
     } else {
-        fprintf(stderr, "ID inválido!\n");
+        fprintf(stderr, "\033[31mID inválido!\n\033[m");
     }
 }
 
@@ -98,9 +98,9 @@ void handleEditCredential() {
 
         editCredential(id, login, password);
 
-        printf("Credencial editada com sucesso!\n");
+        printf("\033[32mCredencial editada com sucesso!\n\033[m");
     } else {
-        fprintf(stderr, "ID inválido!\n");
+        fprintf(stderr, "\033[31mID inválido!\n\033[m");
     }
 
 }
