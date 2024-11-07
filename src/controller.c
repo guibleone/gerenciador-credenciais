@@ -29,11 +29,11 @@ void searchByService(char *service) {
 
     loadCredentials(credentials);
 
-    printf("%s%20s%20s%15s\n", "ID", "Serviço", "Login", "Senha");
+    printf("%s%25s%25s%20s\n", "ID", "Serviço", "Login", "Senha");
     for (int i = 0; i < c; i++) {
         if (!strcmp(credentials[i].service, service)) {
             found = 1;
-            printf("%d%20s%20s%15s\n", i, credentials[i].service, credentials[i].login, credentials[i].password);
+            printf("%d%25s%25s%20s\n", i, credentials[i].service, credentials[i].login, credentials[i].password);
         }
     }
 
@@ -57,7 +57,7 @@ int getAll() {
     loadCredentials(credentials);
 
     if (c > 0) {
-        printf("%s%20s%20s%15s\n", "ID", "Serviço", "Login", "Senha");
+        printf("%s%25s%25s%20s\n", "ID", "Serviço", "Login", "Senha");
         showCredentials(0, c, credentials);
     }
 

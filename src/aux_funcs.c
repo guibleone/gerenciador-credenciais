@@ -43,7 +43,7 @@ void loadCredentials(Credential *credentials) {
 }
 
 int showCredentials(int x, int y, Credential * credentials) {
-    printf("%d%20s%20s%15s\n", x, credentials[x].service, credentials[x].login, credentials[x].password);
+    printf("%d%25s%25s%20s\n", x, credentials[x].service, credentials[x].login, credentials[x].password);
 
     if (x == y - 1){
         return x;
