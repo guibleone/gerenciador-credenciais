@@ -39,3 +39,13 @@ void loadCredentials(Credential *credentials) {
         i++;
     }
 }
+
+int showCredentials(int x, int y, Credential * credentials) {
+    printf("%d%20s%20s%15s\n", x, credentials[x].service, credentials[x].login, credentials[x].password);
+
+    if (x == y - 1){
+        return x;
+    }
+    
+    return showCredentials(x + 1, y, credentials);
+}
