@@ -38,6 +38,8 @@ void loadCredentials(Credential *credentials) {
         strcpy(credentials[i].password, password);
         i++;
     }
+
+    fclose(file);
 }
 
 int showCredentials(int x, int y, Credential * credentials) {
