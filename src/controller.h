@@ -1,7 +1,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-void getAll();
+int getAll();
 void createCredential(char *service, char *login, char *password);
 void searchByService(char *service);
 void deleteCredential(int id);

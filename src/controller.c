@@ -29,11 +29,10 @@ void searchByService(char *service) {
 
     loadCredentials(credentials);
 
+    printf("%s%20s%20s%15s\n", "ID", "Serviço", "Login", "Senha");
     for (int i = 0; i < c; i++) {
         if (!strcmp(credentials[i].service, service)) {
             found = 1;
-            if (i == 0)
-                printf("%s%20s%20s%15s\n", "ID", "Serviço", "Login", "Senha");
             printf("%d%20s%20s%15s\n", i, credentials[i].service,
                    credentials[i].login, credentials[i].password);
         }
@@ -45,7 +44,7 @@ void searchByService(char *service) {
     free(credentials);
 }
 
-void getAll() {
+int getAll() {
     int c = RowCounter("usuarios.txt");
     if (c <= 0) {
         fprintf(stderr, "Nenhuma credencial cadastrada.\n");
@@ -67,6 +66,7 @@ void getAll() {
     }
 
     free(credentials);
+    return c;
 }
 
 void deleteCredential(int id) {
@@ -81,11 +81,6 @@ void deleteCredential(int id) {
 
     FILE *file;
     file = fopen("usuarios.txt", "w");
-
-    if ((id + 1) > c)
-        fprintf(stderr, "Não existe credencial com este ID.\n");
-    if (id < 0)
-        fprintf(stderr, "ID inválido!\n");
 
     for (int i = 0; i < c; i++) {
         if (i != id) {
@@ -110,11 +105,6 @@ void editCredential(int id, char *login, char *password) {
 
     FILE *file;
     file = fopen("usuarios.txt", "w");
-
-    if ((id + 1) > c)
-        fprintf(stderr, "Não existe credencial com este ID.\n");
-    if (id < 0)
-        fprintf(stderr, "ID inválido!\n");
 
     for (int i = 0; i < c; i++) {
         if (i != id) {
