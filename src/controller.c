@@ -1,9 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include "aux_funcs.h"
 #include "types.h"
+
+int RowCounter(char *filename) {
+    FILE *file;
+    file = fopen(filename, "r");
+    if (file == NULL) {
+        fprintf(stderr,
+                "Não há credenciais salvas. Cadastre uma primeiramente.\n");
+        exit(EXIT_FAILURE);
+    }
+    int c = 0;
+    char ch;
+    while ((ch = getc(file)) != EOF) {
+        if (ch == '\n') {
+            c++;
+        }
+    }
+    fclose(file);
+    return c;
+}
+
+void loadCredentials(Credential *credentials) {
+    FILE *file;
+    file = fopen("usuarios.txt", "r");
+
+    char service[40];
+    char login[40];
+    char password[40];
+
+    int i = 0;
+    while (fscanf(file, "%s %s %s", service, login, password) != EOF) {
+        strcpy(credentials[i].service, service);
+        strcpy(credentials[i].login, login);
+        strcpy(credentials[i].password, password);
+        i++;
+    }
+
+    fclose(file);
+}
+
+int showCredentials(int x, int y, Credential * credentials) {
+    printf("%d%25s%25s%20s\n", x, credentials[x].service, credentials[x].login, credentials[x].password);
+
+    if (x == y - 1){
+        return x;
+    }
+    
+    return showCredentials(x + 1, y, credentials);
+}
+
 
 void createCredential(char *service, char *login, char *password) {
     FILE *file;
@@ -113,4 +160,32 @@ void editCredential(int id, char *login, char *password) {
 
     free(credentials);
     fclose(file);
+}
+
+void readBufferFromFile(char * buffer, int buffer_size){
+    FILE * file;
+    file = fopen("usuarios.txt", "r");
+    fread(buffer, buffer_size, 1, file);
+    fclose(file);
+}
+
+unsigned long int getBufferSize(){
+    FILE * file;
+
+    file = fopen("usuarios.txt", "r");
+    char ch;
+    unsigned long int count = 0;
+    while((ch = getc(file)) != EOF){
+        count++;
+    }
+
+    fclose(file);
+    return count;
+}
+
+void writeBufferOnFile(char * buffer, int buffer_size){
+    FILE * file;
+    file = fopen("usuarios.txt", "w");
+    fwrite(buffer, buffer_size, 1, file);
+    fclose(file);  
 }

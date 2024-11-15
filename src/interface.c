@@ -1,6 +1,7 @@
 #include "controller.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "auth.h"
 
 void drawLine(int length, char ch) {
     for (int i = 0; i < length; i++)
@@ -12,6 +13,21 @@ void waitEnter() {
     printf(">>> Aperte 'Enter' para continuar...\n");
     while (getchar() != '\n'); // Limpa o buffer de entrada
     getchar();
+}
+
+void handleLogin(){
+    char login[30];
+    char password[30];
+
+    drawLine(60, '=');
+    printf("\033[34m%42s\n\033[m", "Gerenciador de Credenciais");
+    drawLine(60, '=');
+    printf("Login: ");
+    scanf("%s", login);
+    printf("password: ");
+    scanf("%s", password);
+
+    authenticate(login, password);
 }
 
 int menu(char *argv[], int argc) {

@@ -1,9 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "interface.h"
+#include "crypt_module.h"
 
 int main() {
-    // Sistema de login
+
+    handleLogin();
+
+    decryptFile();
+
     char *args[] = {"Mostrar todas credenciais", "Buscar por serviço",
                     "Cadastrar nova credencial", "Editar credencial",
                     "Excluir credencial",        "Sair"};
@@ -32,6 +37,7 @@ int main() {
             break;
         case 6:
             printf("\033[31mSaindo do sistema!\n\033[m");
+            encryptFile();
             break;
         default:
             printf("Opção inválida! Tente novamente.\n");

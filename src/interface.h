@@ -8,5 +8,6 @@ void handleCreateCredential();
 void handleShowAll();
 void handleDeleteCredential();
 void handleEditCredential();
+void handleLogin();
 
 #endif
