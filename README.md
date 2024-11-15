@@ -41,6 +41,7 @@ Para acessar o sistema pela primeira vez, siga estes passos:
 
 ## Funcionalidades
 
+* **Senhas seguras:** Suas credencials são guardadas com criptografia.
 * **Busca:** Encontre facilmente um site ou senha específicos.
 * **Cadastro de Nova Credencial:** Adicione novas credenciais com site, e-mail e senha.
 * **Edição de Credenciais:** Modifique as informações de uma credencial existente.
