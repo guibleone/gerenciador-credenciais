@@ -4,8 +4,8 @@
 #include <string.h>
 
 int authenticate(char * login, char * password){
-    char registeredLogin[] = "hitallo";
-    char registeredPassword[] = "12345";
+    char registeredLogin[] = "root";
+    char registeredPassword[] = "root";
 
     if (!strcmp(login, registeredLogin)){
         if (!strcmp(password, registeredPassword)){
